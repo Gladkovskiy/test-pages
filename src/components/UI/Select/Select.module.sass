@@ -1,0 +1,26 @@
+
+@import ../../../defaultStyle/variables
+
+.select
+    color: $text-icons
+    position: relative
+    &:hover
+        cursor: pointer
+    &List      
+        position: absolute
+        padding-top: 1rem
+        left: -50%
+        ul
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            background: $prymary-color
+            padding: 1rem
+            box-shadow: 2px 2px 15px #000 
+            border-radius: 0.5rem
+            min-width: 5rem
+            li
+                margin-top: 0.5rem
+                &:hover
+                    color: $backlight-text-icons
+                    cursor: pointer

@@ -1,0 +1,36 @@
+@import ../../../defaultStyle/variables
+    
+.menuPC
+    display: flex
+    width: 50%
+    justify-content: space-between
+    position: relative
+    span
+        cursor: pointer       
+    a, span
+        color: $text-icons
+        &:hover
+            color: $backlight-text-icons
+    
+
+.subMenu
+    position: absolute
+    padding-top: 1rem
+    ul
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        background: $prymary-color
+        padding: 1rem
+        box-shadow: 2px 2px 15px #000 
+        border-radius: 0.5rem
+        min-width: 12rem
+        li
+            margin-top: 0.5rem
+
+a.link
+    color: $backlight-text-icons
+            
+            
+
+            
