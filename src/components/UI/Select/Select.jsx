@@ -11,13 +11,22 @@ const Select = ({options}) => {
 
   const [visible, setVisible] = useState(false)
 
+  const clsLabel = [classes.labelSpan]
+
+  if (visible) {
+    clsLabel.push(classes.labelSpanRotate)
+  }
+
   return (
     <div
       className={classes.select}
       onMouseEnter={() => setVisible(!visible)}
       onMouseLeave={() => setVisible(!visible)}
     >
-      {value.label}
+      <div className={classes.label}>
+        <div>{value.label}</div>
+        <span className={clsLabel.join(' ')}>&#9660;</span>
+      </div>
       {visible && (
         <div className={classes.selectList}>
           <ul>
@@ -27,7 +36,7 @@ const Select = ({options}) => {
                   setValue({...item})
                   setVisible(!visible)
                 }}
-                key={index}
+                key={index + 'u'}
               >
                 {item.label}
               </li>
