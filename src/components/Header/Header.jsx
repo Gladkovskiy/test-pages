@@ -55,7 +55,14 @@ const Header = () => {
       <NavLink to="/" exact>
         ALEX HOTEL
       </NavLink>
+
       <MenuPC options={optionsMenuPC} />
+
+      <div className={classes.number}>
+        <a href="tel:+38(099) XXX XX XX">+38(099) XXX XX XX</a>
+        <a href="tel:+38(067) XXX XX XX">+38(067) XXX XX XX</a>
+      </div>
+
       <Select options={optionsSelect} />
     </div>
   )

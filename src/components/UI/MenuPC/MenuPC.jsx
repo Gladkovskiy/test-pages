@@ -17,7 +17,7 @@ const MenuPC = ({options}) => {
     <ul className={classes.menuPC}>
       {options.map((item, index) => (
         <li
-          key={index}
+          key={index + 'f'}
           onMouseEnter={() => onMouseEnterLeave(index)}
           onMouseLeave={() => onMouseEnterLeave(index)}
         >
@@ -49,7 +49,7 @@ const SubMenu = ({option, onMenuHandler}) => {
     <div className={classes.subMenu}>
       <ul>
         {option.map((item, index) => (
-          <li key={index} onClick={onMenuHandler}>
+          <li key={index + 'z'} onClick={onMenuHandler}>
             <NavLink to={item.path} exact activeStyle={{color: 'black'}}>
               {item.name}
             </NavLink>
