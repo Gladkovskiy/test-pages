@@ -50,7 +50,7 @@ const SubMenu = ({option, onMenuHandler}) => {
       <ul>
         {option.map((item, index) => (
           <li key={index + 'z'} onClick={onMenuHandler}>
-            <NavLink to={item.path} exact activeStyle={{color: 'black'}}>
+            <NavLink to={item.path} exact activeClassName={classes.link}>
               {item.name}
             </NavLink>
           </li>
