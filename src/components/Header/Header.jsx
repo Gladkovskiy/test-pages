@@ -63,7 +63,9 @@ const Header = () => {
         <a href="tel:+38(067) XXX XX XX">+38(067) XXX XX XX</a>
       </div>
 
-      <Select options={optionsSelect} />
+      <div className={classes.selectLang}>
+        <Select options={optionsSelect} />
+      </div>
     </div>
   )
 }
