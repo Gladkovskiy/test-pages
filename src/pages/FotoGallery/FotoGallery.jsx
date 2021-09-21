@@ -1,9 +1,12 @@
 import React from 'react'
+import classes from './FotoGallery.module.sass'
+
+import Gallary from '../../components/Gallery/Gallary'
 
 const FotoGallery = () => {
   return (
-    <div>
-      <h2>FotoGallery</h2>
+    <div className={classes.FotoGallery}>
+      <Gallary />
     </div>
   )
 }
