@@ -29,8 +29,7 @@ const Footer = () => {
       <div className={classes.adress}>
         <span className="icon-adress"></span>
         <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, ut
-          quisquam
+          Украина, Донецкая область, <br /> Краматорск, ул. Анри Барбюса, 127
         </div>
       </div>
     </div>

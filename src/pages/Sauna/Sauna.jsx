@@ -31,14 +31,16 @@ const Sauna = () => {
   )
 
   return (
-    <div className={classes.Rooms}>
-      <Tabs
-        onClick={setTabsContent}
-        activeTab={tabsContent}
-        tabNames={tabNames}
-      >
-        {tabsContentRender(tabsContent)}
-      </Tabs>
+    <div className={classes.Sauna}>
+      <div className={classes.colorWrapper}>
+        <Tabs
+          onClick={setTabsContent}
+          activeTab={tabsContent}
+          tabNames={tabNames}
+        >
+          {tabsContentRender(tabsContent)}
+        </Tabs>
+      </div>
     </div>
   )
 }

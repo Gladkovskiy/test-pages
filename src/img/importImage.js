@@ -34,6 +34,12 @@ import gallery_7 from './fotogallery/7.webp'
 import gallery_8 from './fotogallery/8.webp'
 import gallery_9 from './fotogallery/9.webp'
 
+import main_1 from './mainImage/1.jpg'
+import main_2 from './mainImage/2.jpg'
+import main_3 from './mainImage/3.jpg'
+import main_4 from './mainImage/4.jpg'
+import main_5 from './mainImage/5.jpg'
+
 export const room1 = [room1_1, room1_2]
 export const room2 = [room2_1, room2_2]
 export const room3 = [room3_1, room3_2]
@@ -52,3 +58,5 @@ export const gallery = [
   gallery_8,
   gallery_9,
 ]
+
+export const mainImage = [main_1, main_2, main_3, main_4, main_5]
