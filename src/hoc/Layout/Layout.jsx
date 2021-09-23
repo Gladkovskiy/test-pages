@@ -16,7 +16,7 @@ const Layout = ({children}) => {
       <Header />
 
       {/* Тест */}
-      <button onClick={() => setOpenBooking(true)}>Booking</button>
+      {/* <button onClick={() => setOpenBooking(true)}>Booking</button> */}
 
       <div className={classes.main}>{children}</div>
       <Footer />

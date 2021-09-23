@@ -1,9 +1,13 @@
 import React from 'react'
+import GoogleMaps from '../../components/GoogleMaps/GoogleMaps'
+import classes from './Adress.module.sass'
 
 const Adress = () => {
   return (
-    <div>
-      <h2>Adress</h2>
+    <div className={classes.Adress}>
+      <div className={classes.colorWrapper}>
+        <GoogleMaps />
+      </div>
     </div>
   )
 }

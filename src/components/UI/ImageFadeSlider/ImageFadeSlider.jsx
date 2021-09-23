@@ -1,9 +1,9 @@
 import React from 'react'
-import classes from './ImageSlider.module.sass'
+import classes from './ImageFadeSlider.module.sass'
 import 'react-slideshow-image/dist/styles.css'
-import {Slide} from 'react-slideshow-image'
+import {Fade} from 'react-slideshow-image'
 
-const ImageSlider = ({
+const ImageFadeSlider = ({
   width,
   height,
   slideItem,
@@ -14,8 +14,8 @@ const ImageSlider = ({
   transitionDuration = 1000,
 }) => {
   return (
-    <div style={{width}} className={classes.ImageSlider}>
-      <Slide
+    <div style={{width}} className={classes.ImageFadeSlider}>
+      <Fade
         easing="easing"
         indicators={false}
         duration={duration}
@@ -24,13 +24,15 @@ const ImageSlider = ({
         transitionDuration={transitionDuration}
       >
         {slideItem.map((item, index) => (
-          <div className={classes.eachSlide} key={index + 's'}>
-            <div style={{backgroundImage: `url(${item})`, height}} />
+          <div className={classes.eachFade} key={index + 'h'}>
+            <div>
+              <img src={item} alt="AlexHotel" />
+            </div>
           </div>
         ))}
-      </Slide>
+      </Fade>
     </div>
   )
 }
 
-export default ImageSlider
+export default ImageFadeSlider
