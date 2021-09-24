@@ -1,7 +1,14 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import classes from './AboutUs.module.sass'
+import {globalStateContext} from '../../context/GlobalState'
 
 const AboutUs = () => {
+  const {setBgNumber} = useContext(globalStateContext)
+  useEffect(() => {
+    setBgNumber(1)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <div className={classes.AboutUs}>
       <div className={classes.colorWrapper}>

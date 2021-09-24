@@ -4,9 +4,12 @@ import classes from './Tabs.module.sass'
 const Tabs = ({children, onClick, activeTab, tabNames}) => {
   return (
     <div className={classes.Tabs}>
-      <div className={classes.TabsPanel}>
+      <div
+        className={classes.TabsPanel}
+        style={{gridTemplateColumns: `repeat(${tabNames.length}, 1fr)`}}
+      >
         {tabNames.map((item, index) => {
-          const cls = [classes.TabsItem]
+          const cls = [classes.TabsItem, classes.third]
           if (activeTab === index) {
             cls.push(classes.active)
           }

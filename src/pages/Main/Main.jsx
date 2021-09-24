@@ -10,7 +10,6 @@ const Main = () => {
       <div className={classes.full}>
         <ImageFadeSlider
           width="100%"
-          height="10rem"
           slideItem={mainImage}
           arrows={false}
           pauseOnHover={false}

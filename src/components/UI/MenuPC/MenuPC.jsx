@@ -6,11 +6,23 @@ const MenuPC = ({options}) => {
   const initialValue = new Array(options.length).fill(false)
   const [visible, setVisible] = useState(initialValue)
 
+  //для появления сабменю
   const onMouseEnterLeave = index => {
     const arr = [...visible]
     const invers = !arr[index]
     arr.splice(index, 1, invers)
     setVisible(arr)
+  }
+
+  //для подсветки span активного
+  const [activeSpan, setActiveSpan] = useState(0)
+
+  const activeSpanClass = index => {
+    const cls = [classes.Span]
+    if (activeSpan === index) {
+      cls.push(classes.activeSpan)
+    }
+    return cls.join(' ')
   }
 
   return (
@@ -22,9 +34,14 @@ const MenuPC = ({options}) => {
           onMouseLeave={() => onMouseEnterLeave(index)}
         >
           {item.subMenu ? (
-            <span>{item.name}</span>
+            <span className={activeSpanClass(index)}>{item.name}</span>
           ) : (
-            <NavLink to={item.path} exact activeClassName={classes.link}>
+            <NavLink
+              to={item.path}
+              exact
+              activeClassName={classes.link}
+              onClick={() => setActiveSpan(0)}
+            >
               {item.name}
             </NavLink>
           )}
@@ -32,7 +49,10 @@ const MenuPC = ({options}) => {
           {item.subMenu
             ? visible[index] && (
                 <SubMenu
-                  onMenuHandler={() => onMouseEnterLeave(index)}
+                  onMenuHandler={() => {
+                    onMouseEnterLeave(index)
+                    setActiveSpan(index)
+                  }}
                   option={item.subMenu}
                 />
               )
