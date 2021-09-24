@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import classes from './Sauna.module.sass'
+import {globalStateContext} from '../../context/GlobalState'
 
 import ImageSlider from '../../components/UI/ImageSlider/ImageSlider'
 import TextTabElement from '../../components/UI/TextTabElement/TextTabElement'
@@ -22,6 +23,12 @@ const tabNames = ['Большая сауна + бассейн', 'Маленьк�
 
 const Sauna = () => {
   const [tabsContent, setTabsContent] = useState(0)
+
+  const {setBgNumber} = useContext(globalStateContext)
+  useEffect(() => {
+    setBgNumber(3)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const tabsContentRender = index => (
     <>

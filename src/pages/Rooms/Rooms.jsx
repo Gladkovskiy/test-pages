@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import classes from './Rooms.module.sass'
+import {globalStateContext} from '../../context/GlobalState'
 
 import Tabs from '../../components/UI/Tabs/Tabs'
 import ImageSlider from '../../components/UI/ImageSlider/ImageSlider'
@@ -25,6 +26,12 @@ const tabNames = ['Люкс', 'Улучшенный', 'Стандарт']
 
 const Rooms = () => {
   const [tabsContent, setTabsContent] = useState(0)
+
+  const {setBgNumber} = useContext(globalStateContext)
+  useEffect(() => {
+    setBgNumber(2)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const tabsContentRender = index => (
     <>
