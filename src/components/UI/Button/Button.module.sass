@@ -3,11 +3,12 @@
 .Button
   display: inline-block
   padding: 1rem 2rem
-  border-radius: .4rem
+  border-radius: 2rem
   border: 1px solid #ccc
   text-transform: uppercase
   font-weight: bold
   font-size: 1.2rem
+  position: relative
   &:focus
     outline: none
   &:active
@@ -24,8 +25,43 @@
   background: rgba(161, 240, 69, 1)
 
 .primary
-  background: $accent-color   
+  background: $backlight-text-icons   
   color: $text-icons
+
+.booking
+  color: $text-icons
+  background: $backlight-text-icons
+  border: 1px solid $backlight-text-icons
+  &:after
+    content: ''
+    width: 30px 
+    height: 30px
+    border-radius: 100%
+    border: 6px solid $backlight-text-icons
+    position: absolute
+    z-index: -1
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    animation: ring 1.5s infinite
+  &:focus
+    &:after
+      animation: none
+ 
+
+
+@keyframes ring 
+  0% 
+    width: 30px
+    height: 30px
+    opacity: 1
+  
+  100% 
+    width: 10rem
+    height: 10rem
+    opacity: 0
+  
+
 
 
   

@@ -7,6 +7,9 @@ import {globalStateContext} from '../../context/GlobalState'
 import MenuPC from '../UI/MenuPC/MenuPC'
 import Select from '../UI/Select/Select'
 import MenuMobile from '../UI/MenuMobile/MenuMobile'
+import Button from '../UI/Button/Button'
+import IconLink from '../UI/IconLink/IconLink'
+
 //набор для языка
 const optionsSelect = [
   {
@@ -29,10 +32,10 @@ const optionsMenuPC = [
     name: 'Главная',
     path: '/',
   },
-  {
-    name: 'О нас',
-    path: '/about',
-  },
+  // {
+  //   name: 'О нас',
+  //   path: '/about',
+  // },
   {
     name: 'Комнаты и услуги',
     subMenu: [
@@ -55,10 +58,10 @@ const optionsMenuMobile = [
     name: 'Главная',
     path: '/',
   },
-  {
-    name: 'О нас',
-    path: '/about',
-  },
+  // {
+  //   name: 'О нас',
+  //   path: '/about',
+  // },
   {
     name: 'Комнаты',
     path: '/rooms',
@@ -77,7 +80,7 @@ const optionsMenuMobile = [
   },
 ]
 
-const Header = () => {
+const Header = ({booking}) => {
   const {isMobile} = useContext(globalStateContext)
 
   return (
@@ -89,10 +92,18 @@ const Header = () => {
 
       {!isMobile && <MenuPC options={optionsMenuPC} />}
 
-      <div className={classes.number}>
-        <a href="tel:+38(099) XXX XX XX">+38(099) XXX XX XX</a>
-        <a href="tel:+38(067) XXX XX XX">+38(067) XXX XX XX</a>
-      </div>
+      <Button type="booking" onClick={booking}>
+        Бронь
+      </Button>
+
+      {!isMobile ? (
+        <div className={classes.number}>
+          <a href="tel:+38(099) XXX XX XX">+38(099) XXX XX XX</a>
+          <a href="tel:+38(067) XXX XX XX">+38(067) XXX XX XX</a>
+        </div>
+      ) : (
+        <IconLink href="tel:+38(099) XXX XX XX" icon="icon-phone" />
+      )}
 
       <div className={classes.selectLang}>
         <Select options={optionsSelect} />
