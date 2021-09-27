@@ -18,10 +18,8 @@ const Layout = ({children}) => {
       {openBooking && (
         <PopupBooking setOpenBooking={() => setOpenBooking(!openBooking)} />
       )}
-      <Header />
 
-      {/* Тест */}
-      {/* <button onClick={() => setOpenBooking(true)}>Booking</button> */}
+      <Header booking={() => setOpenBooking(true)} />
 
       <div className={classes.main}>{children}</div>
       <Footer />

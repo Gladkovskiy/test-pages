@@ -75,7 +75,7 @@ const BookingForm = ({close}) => {
       checkedRooms: [],
     },
     datePicker: {start: new Date(), end: new Date()},
-    spanName: ['заезда', 'выезда'],
+    spanName: ['Заезд', 'Выезд'],
     formValid: false,
   })
   //ответ на отправку заявки
@@ -198,7 +198,7 @@ const BookingForm = ({close}) => {
                 {Object.keys(textInput.datePicker).map(
                   (datePicerOption, index) => (
                     <React.Fragment key={index + 'x'}>
-                      <span>Дата {textInput.spanName[index]}:</span>
+                      <span>{textInput.spanName[index]}:</span>
                       <DatePicker
                         className={classes.datePickerItem}
                         dateFormat="dd/MM/yyyy"
