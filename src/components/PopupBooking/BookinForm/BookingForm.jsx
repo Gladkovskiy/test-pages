@@ -70,7 +70,7 @@ const BookingForm = ({close}) => {
         'стандарт Уютный',
         'стандарт Семейный',
       ],
-      value: ['1-люкс', '2-люкс', '3-улучшенный', '4-стандарт', '5-стандарт'],
+      value: ['1-улучшенный', '3-люкс', '4-люкс', '5-стандарт', '6-стандарт'],
       errorMessage: 'Неверно введён номер телефона',
       checkedRooms: [],
     },
@@ -134,15 +134,14 @@ const BookingForm = ({close}) => {
     const startDate = new Date(textInput.datePicker.start)
     const endDate = new Date(textInput.datePicker.end)
 
-    information.date = `с ${startDate.getFullYear()}/${
+    information.date = `с ${startDate.getDate()}/${
       startDate.getMonth() + 1
-    }/${startDate.getDate()} до ${endDate.getFullYear()}/${
+    }/${startDate.getFullYear()} до ${endDate.getDate()}/${
       endDate.getMonth() + 1
-    }/${endDate.getDate()}`
+    }/${endDate.getFullYear()}`
 
-    console.log(information)
     try {
-      await axios.post('/', information)
+      await axios.post('/api/booking', information)
       setBookingAnswer({...bookingAnswer, answerTable: true, loader: false})
     } catch (error) {
       setBookingAnswer({
