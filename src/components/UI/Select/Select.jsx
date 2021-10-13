@@ -1,13 +1,8 @@
 import React, {useState} from 'react'
 import classes from './Select.module.sass'
 
-const initialValue = {
-  label: 'RU',
-  value: 'RU',
-}
-
-const Select = ({options}) => {
-  const [value, setValue] = useState(initialValue) //это должно приходит сверху (context)
+const Select = ({options, setlanguage, initialLng}) => {
+  const [value, setValue] = useState(initialLng)
 
   const [visible, setVisible] = useState(false)
 
@@ -35,6 +30,7 @@ const Select = ({options}) => {
                 onClick={() => {
                   setValue({...item})
                   setVisible(!visible)
+                  setlanguage(item.value)
                 }}
                 key={index + 'u'}
               >

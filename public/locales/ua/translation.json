@@ -1,0 +1,26 @@
+{
+  "header": {
+    "booking": "бронювання",
+    "menuPC": [
+      {
+        "name": "Головна",
+        "path": "/"
+      },
+      {
+        "name": "Кімнати та послуги",
+        "subMenu": [
+          {"name": "кімнати", "path": "/rooms"},
+          {"name": "сауна", "path": "/sauna"}
+        ]
+      },
+      {
+        "name": "Фото",
+        "path": "/gallery"
+      },
+      {
+        "name": "як нас знайти?",
+        "path": "/adress"
+      }
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {NavLink} from 'react-router-dom'
+import {useTranslation} from 'react-i18next'
 
 import classes from './Header.module.sass'
 import {globalStateContext} from '../../context/GlobalState'
@@ -27,15 +28,11 @@ const optionsSelect = [
 ]
 
 //набор для меню
-const optionsMenuPC = [
+/* const optionsMenuPC = [
   {
     name: 'Главная',
     path: '/',
   },
-  // {
-  //   name: 'О нас',
-  //   path: '/about',
-  // },
   {
     name: 'Комнаты и услуги',
     subMenu: [
@@ -51,17 +48,13 @@ const optionsMenuPC = [
     name: 'Как нас найти?',
     path: '/adress',
   },
-]
+] */
 
 const optionsMenuMobile = [
   {
     name: 'Главная',
     path: '/',
   },
-  // {
-  //   name: 'О нас',
-  //   path: '/about',
-  // },
   {
     name: 'Комнаты',
     path: '/rooms',
@@ -82,6 +75,15 @@ const optionsMenuMobile = [
 
 const Header = ({booking}) => {
   const {isMobile} = useContext(globalStateContext)
+  const [t, i18n] = useTranslation()
+
+  const setLng = lng => i18n.changeLanguage(lng)
+
+  // инициализация языка
+  const initialLng = {
+    label: i18n.language,
+    value: i18n.language,
+  }
 
   return (
     <div className={classes.header}>
@@ -90,10 +92,12 @@ const Header = ({booking}) => {
         ALEX HOTEL
       </NavLink>
 
-      {!isMobile && <MenuPC options={optionsMenuPC} />}
+      {!isMobile && (
+        <MenuPC options={t('header.menuPC', {returnObjects: true})} />
+      )}
 
       <Button type="booking" onClick={booking}>
-        Бронь
+        {t('header.booking')}
       </Button>
 
       {!isMobile ? (
@@ -106,7 +110,11 @@ const Header = ({booking}) => {
       )}
 
       <div className={classes.selectLang}>
-        <Select options={optionsSelect} />
+        <Select
+          options={optionsSelect}
+          setlanguage={setLng}
+          initialLng={initialLng}
+        />
       </div>
     </div>
   )
