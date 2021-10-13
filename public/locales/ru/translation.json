@@ -1,0 +1,26 @@
+{
+  "header": {
+    "booking": "бронь",
+    "menuPC": [
+      {
+        "name": "Главная",
+        "path": "/"
+      },
+      {
+        "name": "Комнаты и услуги",
+        "subMenu": [
+          {"name": "Комнаты", "path": "/rooms"},
+          {"name": "Сауна", "path": "/sauna"}
+        ]
+      },
+      {
+        "name": "Фото",
+        "path": "/gallery"
+      },
+      {
+        "name": "Как нас найти?",
+        "path": "/adress"
+      }
+    ]
+  }
+}

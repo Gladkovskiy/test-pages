@@ -6,10 +6,9 @@ import classes from './BookingForm.module.sass'
 import Input from '../../UI/Input/Input'
 import Checkbox from '../../UI/Checkbox/Checkbox'
 import Button from '../../UI/Button/Button'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 import CloseForm from '../../UI/CloseForm/CloseForm'
 import Loader from '../../UI/Loader/Loader'
+import DatePickerElement from '../../UI/DatePicker/DatePicker'
 
 function validation(type, value, shouldValidate) {
   if (!shouldValidate) {
@@ -51,15 +50,17 @@ const BookingForm = ({close}) => {
         valid: false,
         shouldValidate: true,
         touched: false,
+        focuse: false,
       },
       TEL: {
         type: 'tel',
         label: 'Введите номер телефона',
-        value: '+380',
+        value: '',
         errorMessage: 'Неверно введён номер телефона',
         valid: false,
         shouldValidate: true,
         touched: false,
+        focuse: false,
       },
     },
     checkbox: {
@@ -76,6 +77,8 @@ const BookingForm = ({close}) => {
     },
     datePicker: {start: new Date(), end: new Date()},
     spanName: ['Заезд', 'Выезд'],
+    datePickerValid: false,
+    datePickerTouched: false,
     formValid: false,
   })
   //ответ на отправку заявки
@@ -103,8 +106,9 @@ const BookingForm = ({close}) => {
       inputState.shouldValidate
     )
     inputsState[inputName] = inputState
+    const isFormValid = formValid(inputsState)
 
-    setState({...state, inputs: inputsState, formValid: formValid(inputsState)})
+    setState({...state, inputs: inputsState, formValid: isFormValid})
   }
 
   const onChangeHandlerCheckbox = (event, state, setState) => {
@@ -152,6 +156,48 @@ const BookingForm = ({close}) => {
     }
   }
 
+  const onFocusChangeLabel = (inputName, state, setState) => {
+    const inputsState = {...state.inputs}
+    const inputState = {...inputsState[inputName]}
+
+    inputState.focuse = true
+    inputsState[inputName] = inputState
+    setState({...state, inputs: inputsState})
+  }
+
+  const onBlurChangeLabel = (inputName, state, setState) => {
+    const inputsState = {...state.inputs}
+    const inputState = {...inputsState[inputName]}
+
+    inputState.focuse = false
+    inputsState[inputName] = inputState
+    setState({...state, inputs: inputsState})
+  }
+
+  const onChangeDatepiker = (date, datePicerOption) => {
+    const localState = {...textInput.datePicker}
+
+    localState[datePicerOption] = date
+
+    const startMs = Date.parse(localState.start.toString())
+    const endMs = Date.parse(localState.end.toString())
+    let valid = false
+    let touched = false
+    if (datePicerOption === 'end') {
+      touched = true
+      if (endMs >= startMs) {
+        valid = true
+      }
+    }
+
+    setTextInput({
+      ...textInput,
+      datePicker: localState,
+      datePickerTouched: touched,
+      datePickerValid: valid,
+    })
+  }
+
   return (
     <>
       {bookingAnswer.loader ? (
@@ -173,6 +219,12 @@ const BookingForm = ({close}) => {
                       textInput,
                       setTextInput
                     )
+                  }
+                  onFocusChangeLabel={() =>
+                    onFocusChangeLabel(inputName, textInput, setTextInput)
+                  }
+                  onBlurChangeLabel={() =>
+                    onBlurChangeLabel(inputName, textInput, setTextInput)
                   }
                 />
               ))}
@@ -198,20 +250,26 @@ const BookingForm = ({close}) => {
                   (datePicerOption, index) => (
                     <React.Fragment key={index + 'x'}>
                       <span>{textInput.spanName[index]}:</span>
-                      <DatePicker
-                        className={classes.datePickerItem}
+                      <DatePickerElement
+                        local={
+                          localStorage.getItem('i18nextLng').toLowerCase() ||
+                          'en'
+                        }
                         dateFormat="dd/MM/yyyy"
                         selected={textInput.datePicker[datePicerOption]}
-                        onChange={date => {
-                          const localState = {...textInput.datePicker}
-                          localState[datePicerOption] = date
-                          setTextInput({...textInput, datePicker: localState})
-                        }}
+                        onChange={date =>
+                          onChangeDatepiker(date, datePicerOption)
+                        }
                       />
                     </React.Fragment>
                   )
                 )}
               </div>
+              {!textInput.datePickerValid && textInput.datePickerTouched && (
+                <p style={{color: 'red', marginBottom: '1rem'}}>
+                  Неверная дата
+                </p>
+              )}
 
               <div className={classes.button}>
                 <Button

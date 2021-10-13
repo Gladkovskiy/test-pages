@@ -1,28 +1,58 @@
+@import '../../../defaultStyle/variables'
+
 .Input
-  margin-bottom: 15px
-  label
-    margin-bottom: 3px
+  margin-bottom: 1.5rem
+  .label
+    margin-bottom: 0.3rem
     padding: 0
     display: block
+  div
+    position: relative
   input
     display: block
-    border: 4px solid transparent
-    border-radius: 10px
-    padding: 7px
-    margin: 0px 0px 5px
+    border: 0.4rem solid transparent
+    border-radius: 1rem
+    padding: 0.7rem
+    margin: 0 0 0.5rem
     width: 100%
     outline: none
     transition: all 300ms ease-in-out
     &:focus
-      border: 4px solid #5ada5aee
+      border: 0.4rem solid $backlight-text-icons     
   span
     color: #f01f30
-
-  
+ 
 .invalid
   label
     color: #f01f30
   input
-    border: 4px solid #f01f30
+    border: 0.4rem solid #f01f30
     &:focus
-      border: 4px solid #f01f30
+      border: 0.4rem solid #f01f30
+
+.valid
+  label
+      color: #5ada5aee
+  input
+    border: 0.4rem solid #5ada5aee
+    &:focus
+      border: 0.4rem solid #5ada5aee
+    
+
+.labelMaterialUI
+  position: absolute
+  top: 20%
+  left: 5%
+  color: $backlight-text-icons
+  transition: all .3s
+  &:hover
+    cursor: text
+  &_active
+    top: -15%
+    font-size: 1.2rem
+    color: $backlight-text-icons
+    background: rgba(0, 0, 0, 0.7)
+
+
+
+  

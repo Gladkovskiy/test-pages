@@ -1,13 +1,18 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import ReactDOM from 'react-dom'
 import './index.scss'
 import App from './pages/App'
 import reportWebVitals from './reportWebVitals'
 import {BrowserRouter} from 'react-router-dom'
+import './i18n'
+
+import Loader from './components/UI/Loader/Loader'
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Suspense fallback={<Loader />}>
+      <App />
+    </Suspense>
   </BrowserRouter>,
   document.getElementById('root')
 )

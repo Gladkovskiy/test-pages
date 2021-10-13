@@ -14,6 +14,9 @@ const Input = ({
   valid,
   touched,
   shouldValidate,
+  focuse,
+  onFocusChangeLabel = null,
+  onBlurChangeLabel = null,
 }) => {
   const validation = {valid, touched, shouldValidate}
   const inputType = type || 'text'
@@ -24,16 +27,38 @@ const Input = ({
     cls.push(classes.invalid)
   }
 
+  if (valid && touched) {
+    cls.push(classes.valid)
+  }
+
+  let clsLabel = [classes.label, classes.labelMaterialUI]
+
+  if (focuse || value.trim().length !== 0) {
+    clsLabel.push(classes.labelMaterialUI_active)
+  } else {
+    if (value.trim().length === 0) {
+      clsLabel = clsLabel.filter(
+        item => item !== classes.labelMaterialUI_active
+      )
+    }
+  }
+
   return (
     <div className={cls.join(' ')}>
-      <label htmlFor={htmlFor}>{label}</label>
-      <input
-        type={inputType}
-        id={htmlFor}
-        value={value}
-        onChange={onChange}
-        spellCheck="false"
-      />
+      <div>
+        <label htmlFor={htmlFor} className={clsLabel.join(' ')}>
+          {label}
+        </label>
+        <input
+          type={inputType}
+          id={htmlFor}
+          value={value}
+          onChange={onChange}
+          onFocus={onFocusChangeLabel}
+          onBlur={onBlurChangeLabel}
+          spellCheck="false"
+        />
+      </div>
       {isInvalid(validation) ? (
         <span>{errorMessage || 'Введите верное значение'}</span>
       ) : null}
