@@ -1,0 +1,26 @@
+{
+  "header": {
+    "booking": "booking",
+    "menuPC": [
+      {
+        "name": "main",
+        "path": "/"
+      },
+      {
+        "name": "rooms and services",
+        "subMenu": [
+          {"name": "rooms", "path": "/rooms"},
+          {"name": "Sauna", "path": "/sauna"}
+        ]
+      },
+      {
+        "name": "Foto",
+        "path": "/gallery"
+      },
+      {
+        "name": "How to find us?",
+        "path": "/adress"
+      }
+    ]
+  }
+}
